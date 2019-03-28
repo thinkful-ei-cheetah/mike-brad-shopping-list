@@ -25,12 +25,20 @@ function generateNewTemp(name) {
   `;
 }
 
+// created check buttom that applies toggling of shopping item checked css function
+function checkButton() {
+  $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+}
+
+function deleteShoppingItem() {
+  $(this).closest('li').remove();
+  console.log('delete me');
+}
+
 function attachEventListener() {
   $('#js-shopping-list-form').submit(addShoppingItem);
-  console.log('load');
+  $('.shopping-list').on('click', '.shopping-item-toggle', checkButton);
+  $('.shopping-list').on('click', '.shopping-item-delete', deleteShoppingItem);
 }
 
 $(attachEventListener);
-
-// $('.shopping-list').on('click', '.shopping-item-delete', deleteShoppingItem);
-// $(this).closest('li').remove();
